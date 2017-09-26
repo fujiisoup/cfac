@@ -4,7 +4,7 @@ include $(TOP)/Make.conf
 
 ALL_CFLAGS = $(CPPFLAGS) -I$(TOP)/include $(CFLAGS)
 
-.c.o: 
+.c.o:
 	$(CC) -c $(ALL_CFLAGS) $<
 
 PROGS = cfacdbu$(EXE) fdemo$(EXE)
