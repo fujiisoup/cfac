@@ -1,0 +1,23 @@
+# Based on http://conda.pydata.org/docs/travis.html
+
+language: c
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libgsl0-dev -y
+  - sudo apt-get install sqlite3 libsqlite3-dev -y
+  - sudo apt-get install gfortran -y
+  - sudo apt-get install build-essential -y
+  - sudo apt-get install help2man -y
+  - sudo apt-get install texlive-latex-base texlive-latex-extra -y
+
+install:
+  - autoconf -o configure ac-tools/configure.ac
+  - yes yes | ./configure --prefix=$PWD/bin --with-cpc-modules > /dev/null
+  - make
+
+script:
+  - make check
+  - make install
+
+after_success:

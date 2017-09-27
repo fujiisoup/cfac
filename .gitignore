@@ -58,3 +58,6 @@ tags
 
 # NFS locks
 .nfs*
+
+# binary file path
+bin
