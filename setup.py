@@ -2,8 +2,10 @@ import tempfile
 from setuptools import setup, Command
 from setuptools.command import install
 import subprocess
-import sys
+import os
 
+
+INSTALL_DIR = os.path.abspath(os.path.dirname(__file__)) + '/bin'
 
 class Make(Command):
     description = 'Custom build command'
@@ -28,10 +30,14 @@ class Make(Command):
         self._call(['autoconf -o configure ac-tools/configure.ac'])
 
     def configure(self):
+        if not os.path.exists(INSTALL_DIR):
+            os.mkdir(INSTALL_DIR)
+
         if self.agree_cpc is None:
-            self._call(['./configure --prefix=$PWD/bin --with-cpc-modules'])
+            self._call(['./configure --prefix=' + INSTALL_DIR +
+                        ' --with-cpc-modules'])
         else:
-            command = './configure --prefix=$PWD/bin --with-cpc-modules'
+            command = './configure --prefix=' + INSTALL_DIR + ' --with-cpc-modules'
             f = tempfile.TemporaryFile()
             p = subprocess.Popen(command.split(), stdin=subprocess.PIPE,
                                  stdout=f)
