@@ -61,3 +61,8 @@ tags
 
 # binary file path
 bin
+
+# python install file
+build
+dist
+*.egg-info

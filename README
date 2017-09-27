@@ -32,7 +32,7 @@ Note: If you install the above software using a package manager of your OS, make
 
 Installation:
 1) ./configure
-Note 1: Specify --prefix=my/dir, if the default /usr/local is not what you 
+Note 1: Specify --prefix=my/dir, if the default /usr/local is not what you
         want.
 Note 2: Use the "--with-extrainc" and "--with-extralib" options if the
         third-party libraries are not installed in the default system place.
@@ -50,7 +50,7 @@ and utility.
 Usage:
 The "sfac" executable accepts an input file as its only argument. See the "demo"
 directory for examples. For more details, please read the manual, and be sure to
-read the FAQ section of it. 
+read the FAQ section of it.
 
 Evgeny Stambulchik
 Department of Particle Physics and Astrophysics
@@ -58,3 +58,13 @@ Faculty of Physics
 Weizmann Institute of Science
 Rehovot 7610001
 Israel
+
+
+# Python interface
+
+## install
+To install the python interface, call
+```python
+python setup.py make
+python setup.py install
+```
