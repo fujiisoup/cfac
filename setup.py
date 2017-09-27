@@ -43,7 +43,7 @@ class Make(Command):
         self._call(['make', 'make check', 'make install'])
 
     def clean(self):
-        self._call(['make clean'])
+        code = subprocess.call('make clean'.split())
 
     def run(self):
         self.autoconf()
