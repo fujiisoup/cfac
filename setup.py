@@ -37,18 +37,15 @@ class Make(Command):
                                  stdout=f)
             p.stdin.write(b"yes\n")
             p.stdin.write(b"\n")
+            p.communicate() #now wait
             f.close()
 
     def make(self):
-        self._call(['make', 'make check', 'make install'])
-
-    def clean(self):
-        code = subprocess.call('make clean'.split())
+        self._call(['make clean', 'make', 'make check', 'make install'])
 
     def run(self):
         self.autoconf()
         self.configure()
-        self.clean()
         self.make()
 
 
